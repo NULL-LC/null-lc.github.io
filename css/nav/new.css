@@ -1,11 +1,16 @@
-body::before { content: "-"; display: block; height: 3rem; opacity: 0; }
+body::before { content: "-"; display: block; height: 2.5rem; opacity: 0; }
 nav {
 	text-align: left; position: fixed; left: 0; top: 0; width: 100%; z-index: 107; user-select: none;
-	background: #252525; border-radius: 0 0 1rem 1rem; border: 0.02rem solid #999; font-size: 2rem;
+	background: #252525; border-radius: 0 0 1rem 1rem; border: 0.02rem solid #999; line-height: 2.5rem;
 }
 #logo, #navLinks, #navLinks a, #logoText { display: inline-block; }
-#logoLink { color: white; text-decoration: none; line-height: 3rem; background: none; }
-#logoText { line-height: 3rem; font-size: 1.8rem; }
-#logoImg { vertical-align: top; height: 3rem; margin: 0 0.6rem; }
+#logoLink { color: white; text-decoration: none; background: none; }
+#logoText { font-size: 1.6rem; }
+#logoImg { vertical-align: top; height: 2.5rem; margin: 0 0.6rem; }
 #navLinks { float: right; }
-#navLinks a { line-height: 3rem; font-size: 1.6rem; padding: 0 0.4rem; text-decoration: underline; }
+#navLinks a { font-size: 1.6rem; padding: 0 0.4rem; text-decoration: underline; }
+
+
+@media ( max-width: 768px ) { nav, #logoText, #navLinks a { font-size: 1.5rem;  line-height: 2rem; } #logoImg { height: 2rem; } }
+@media ( max-width: 512px ) { body::before { height: 5rem; } }
+@media ( max-width: 480px ) { body::before { height: 7.5rem; } }
