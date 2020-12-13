@@ -10,39 +10,39 @@ jobs:
     Auto_Sync_CSS:
         runs-on: ubuntu-latest
         steps:
-            - name: Checkout Repo
+            - name: 检出储存库
               uses: actions/checkout@v2.3.4
 
 
-            - name: "Download file: footer"
+            - name: "下载文件：footer"
               uses: carlosperate/download-file-action@v1.0.3
               with:
                 file-url: https://static.lcwebsite.cn/css/footer/new.css
                 file-name: new.css
                 location: ./css/footer/
 
-            - name: "Download file: list-detailed"
+            - name: "下载文件：list-detailed"
               uses: carlosperate/download-file-action@v1.0.3
               with:
                 file-url: https://static.lcwebsite.cn/css/list/detailed.css
                 file-name: detailed.css
                 location: ./css/list/
 
-            - name: "Download file: list-summary"
+            - name: "下载文件：list-summary"
               uses: carlosperate/download-file-action@v1.0.3
               with:
                 file-url: https://static.lcwebsite.cn/css/list/summary.css
                 file-name: summary.css
                 location: ./css/list/
 
-            - name: "Download file: nav"
+            - name: "下载文件：nav"
               uses: carlosperate/download-file-action@v1.0.3
               with:
                 file-url: https://static.lcwebsite.cn/css/nav/new.css
                 file-name: new.css
                 location: ./css/nav/
 
-            - name: "Download file: style"
+            - name: "下载文件：style"
               uses: carlosperate/download-file-action@v1.0.3
               with:
                 file-url: https://static.lcwebsite.cn/css/style/new.css
@@ -50,7 +50,7 @@ jobs:
                 location: ./css/style/
 
 
-            - name: Commit
+            - name: 提交
               shell: pwsh
               run: |
                 git config --local user.email "64722907+${{ github.actor }}@users.noreply.github.com"
@@ -58,7 +58,7 @@ jobs:
                 git add -A .
                 git commit -m "Actions: 自动同步 CSS 文件于 $(Get-Date -Format '协调世界时 yyyy年M月d日 H时m分s秒' -AsUTC)"
 
-            - name: Push
+            - name: 推送
               uses: ad-m/github-push-action@v0.6.0
               with:
                 github_token: ${{ secrets.GITHUB_TOKEN }}
