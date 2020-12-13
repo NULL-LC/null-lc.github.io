@@ -1,60 +1,79 @@
-name: Update CSS Daily
-on:
-    schedule:
-        - cron: '0 0 */1 * *'
+# name: 每六小时及每次提交后自动同步 CSS
+# on:
+#     schedule:
+#         - cron: '0 0/6 * * *'
+#     push:
+#         branches:
+#           - master
 
-jobs:
-    update-css:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout Repo
-              uses: actions/checkout@v2.0.0
-
-
-            - name: Download footer
-              uses: carlosperate/download-file-action@v1.0.0
-              with:
-                file-url: https://static.lcwebsite.cn/css/footer/new.css
-                file-name: new.css
-                location: ./css/footer/
-
-            - name: Download list detailed
-              uses: carlosperate/download-file-action@v1.0.0
-              with:
-                file-url: https://static.lcwebsite.cn/css/list/detailed.css
-                file-name: detailed.css
-                location: ./css/list/
-
-            - name: Download list summary
-              uses: carlosperate/download-file-action@v1.0.0
-              with:
-                file-url: https://static.lcwebsite.cn/css/list/summary.css
-                file-name: summary.css
-                location: ./css/list/
-
-            - name: Download nav
-              uses: carlosperate/download-file-action@v1.0.0
-              with:
-                file-url: https://static.lcwebsite.cn/css/nav/new.css
-                file-name: new.css
-                location: ./css/nav/
-
-            - name: Download style
-              uses: carlosperate/download-file-action@v1.0.0
-              with:
-                file-url: https://static.lcwebsite.cn/css/style/new.css
-                file-name: new.css
-                location: ./css/style/
+# jobs:
+#     Auto_Sync_CSS:
+#         runs-on: ubuntu-latest
+#         steps:
+#             - name: Checkout Repo
+#               uses: actions/checkout@v2.3.4
 
 
-            - name: Commit
-              run: |
-                git config --local user.email "64722907+lc6464@users.noreply.github.com"
-                git config --local user.name "lc6464"
-                git add -A .
-                git commit -m "Auto update CSS at $(date)."
+#             - name: "Download file: footer"
+#               uses: carlosperate/download-file-action@v1.0.3
+#               with:
+#                 file-url: https://static.lcwebsite.cn/css/footer/new.css
+#                 file-name: new.css
+#                 location: ./css/footer/
 
-            - name: Push
-              uses: ad-m/github-push-action@v0.5.0
-              with:
-                github_token: ${{ secrets.GITHUB_TOKEN }}
+#             - name: "Download file: list-detailed"
+#               uses: carlosperate/download-file-action@v1.0.3
+#               with:
+#                 file-url: https://static.lcwebsite.cn/css/list/detailed.css
+#                 file-name: detailed.css
+#                 location: ./css/list/
+
+#             - name: "Download file: list-summary"
+#               uses: carlosperate/download-file-action@v1.0.3
+#               with:
+#                 file-url: https://static.lcwebsite.cn/css/list/summary.css
+#                 file-name: summary.css
+#                 location: ./css/list/
+
+#             - name: "Download file: nav"
+#               uses: carlosperate/download-file-action@v1.0.3
+#               with:
+#                 file-url: https://static.lcwebsite.cn/css/nav/new.css
+#                 file-name: new.css
+#                 location: ./css/nav/
+
+#             - name: "Download file: style"
+#               uses: carlosperate/download-file-action@v1.0.3
+#               with:
+#                 file-url: https://static.lcwebsite.cn/css/style/new.css
+#                 file-name: new.css
+#                 location: ./css/style/
+
+
+#             - name: Commit
+#               shell: pwsh
+#               run: |
+#                 git config --local user.email "64722907+lc6464@users.noreply.github.com"
+#                 git config --local user.name "lc6464"
+#                 git add -A .
+#                 git commit -m "自动同步 CSS 文件于 $(Get-Date -Format '协调世界时 yyyy年M月d日 H时m分s秒' -AsUTC)"
+
+#             - name: Push
+#               uses: ad-m/github-push-action@v0.6.0
+#               with:
+#                 github_token: ${{ secrets.GITHUB_TOKEN }}
+#                 branch: ${{ github.ref }}
+
+
+
+#     Send_Mail:
+#         runs-on: ubuntu-latest
+#         needs: Auto_Sync_CSS
+#         steps:
+#           - name: Check Commit
+#             shell: python
+#             run: |
+#               from urllib.request import urlopen
+#               from json import loads
+#               res = urlopen('https://api.github.com/repos/lc6464/lc6464.github.io/commits')
+#               result = loads(res.read())[0]['commit']
