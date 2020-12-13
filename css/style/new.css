@@ -1,4 +1,4 @@
-html { font-size: 1.2rem; background: url(//api.lcwebsite.cn/bing/img.ashx) fixed center/cover no-repeat ; color: white; font-family: KaiTi, "Microsoft YaHei"; }
+html { font-size: 1.2rem; background: url(//api.lcwebsite.cn/bing/img.ashx) #222 fixed center/cover no-repeat ; color: white; font-family: KaiTi, "Microsoft YaHei"; }
 body { margin: 0; background: rgba(17, 17, 17, 0.7); padding: 0 0.25rem 0.5rem; }
 img, audio, video, object, iframe, button, embed, input, textarea, svg { vertical-align: middle; }
 a:link, a:visited { color: white; }
