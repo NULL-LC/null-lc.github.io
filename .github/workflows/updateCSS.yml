@@ -55,8 +55,10 @@ jobs:
               run: |
                 git config --local user.email "64722907+${{ github.actor }}@users.noreply.github.com"
                 git config --local user.name ${{ github.actor }}
-                git add -A .
-                git commit -m "Actions: 自动同步 CSS 文件于 $(Get-Date -Format '协调世界时 yyyy年M月d日 H时m分s秒' -AsUTC)"
+                if ($null -eq (git diff)) {} else {
+                  git add -A .
+                  git commit -m "Actions: 自动同步 CSS 文件于 $(Get-Date -Format '协调世界时 yyyy年M月d日 H时m分s秒' -AsUTC)"
+                }
 
             - name: 推送
               uses: ad-m/github-push-action@v0.6.0
