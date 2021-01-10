@@ -2,7 +2,7 @@
 ## 网站
 - 地址：[https://lc6464.github.io/](https://lc6464.github.io/ "GitHub Pages")
 - 地址：[https://lc-gh.vercel.app/](https://lc-gh.vercel.app/ "Vercel")
-> Copyright © 2020 LC. All rights reserved.   LC 版权所有
+> Copyright © 2021 LC. All rights reserved.   LC 版权所有
 
 ## 使用 CDN 加速资源
 - 使用 CDN 加速静态资源以提高加载速度
